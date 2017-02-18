@@ -65,8 +65,8 @@ app.controller("pearlCtrl", function ($scope, $http) {
     /*var rsult = ApiCall.postApiCall(obj).success(function(data){
     	console.log(rsult);
     });*/
-    /*$http({
-	    url: "http://www.lifeofengineers.com/rest/registration/performlogin",
+    $http({
+	    url: "http://192.168.136.1:8080/LifeOfEngineers/rest/registration/performlogin",
 	    dataType: "json",
 	    method: "POST",
 	    headers: {
@@ -77,12 +77,14 @@ app.controller("pearlCtrl", function ($scope, $http) {
 		result = response;
 	}).error(function(error){
 		console.log("Error while invoking service");
-	});*/
+	});
     
     /*$http.get('http://rest-service.guides.spring.io/greeting').
     then(function(response) {
     	console.log(response.data);
     });*/
+    
+//    http://192.168.136.1:8080/LifeOfEngineers/
 });
 
 /*app.factory('albumService', ['$http', '$q'], function albumService($http, $q) {
