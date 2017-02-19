@@ -17,7 +17,16 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl : "./html/pearl.html",
         controller : "pearlCtrl"
     });
+    
+    /*$httpProvider.defaults.userXDomain = true;
+	delete $httpProvider.defaults.header.common['X-Requested-With'];*/
 }]);
+
+/*app.config(['$httpProvider', function($httpProvider) {
+	$httpProvider.defaults.userXDomain = true;
+	delete $httpProvider.defaults.header.common['X-Requested-With'];
+}]);*/
+
 app.controller("emeraldCtrl", function ($scope) {
     $scope.msg = "I love London";
 });
@@ -65,21 +74,63 @@ app.controller("pearlCtrl", function ($scope, $http) {
     /*var rsult = ApiCall.postApiCall(obj).success(function(data){
     	console.log(rsult);
     });*/
-    $http({
-	    url: "http://192.168.136.1:8080/LifeOfEngineers/rest/registration/performlogin",
+    /*$http({
+	    url: "http://192.168.0.43:8080/LifeOfEngineers/rest/registration/performlogin/",
 	    dataType: "json",
 	    method: "POST",
 	    headers: {
 	        "Content-Type": "application/json"
 	    },
 	    data: {'user_name':'anchu.venki@gmail.com', 'password': 'venkat'}
+    	url: "http://192.168.0.43:8080/LifeOfEngineers/rest/registration/performlogin/",
+        dataType: "json",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
 	}).success(function(response){
-		result = response;
+		result = console.log(response);
 	}).error(function(error){
 		console.log("Error while invoking service");
-	});
+	});*/
+    /*$http.post('http://www.lifeofengineers.com/rest/registration/performlogin', { user_name:'anchu.venki@gmail.com', password: 'venkat' } )
+    .then(function(data) {
+        //$scope.names = eval(data);
+        console.log(data)
+    })
+    .catch(function(data) {
+        console.log('Error: ' + data);
+    });*/
+    $http({
+	    /*url: "http://192.168.0.24:8080/LifeOfEngineers/rest/registration/listusers",
+//	    dataType: "json",
+	    method: "GET",
+	    headers: {
+	        "Content-Type": "application/json"
+	    }*/
+	    //data: {'user_name':'anchu.venki@gmail.com', 'password': 'venkat'}
+    	url: "http://192.168.0.24:8080/LifeOfEngineers/rest/registration/performlogin",
+        dataType: "json",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: {'user_name':'anchu.venki@gmail.com', 'password': 'venkat'}
+	}).then(function(response) {
+    	console.log(response.data);
+    });
+
+    /*var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://192.168.0.24:8080/LifeOfEngineers/rest/registration/listusers", true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        // WARNING! Might be injecting a malicious script!
+        console.log("Response from service" + xhr.responseText);
+      }
+    }
+    xhr.send();*/
     
-    /*$http.get('http://rest-service.guides.spring.io/greeting').
+    /*$http.get('http://192.168.0.24:8080/LifeOfEngineers/rest/registration/listusers/').
     then(function(response) {
     	console.log(response.data);
     });*/
